@@ -36,7 +36,7 @@ pipeline {
       parallel {
         stage('Code Analysis') {
           steps {
-            withSonarQubeEnv('sonar') {
+            withSonarQubeEnv('My SonarQube Server') {
               bat(script: 'gradle sonarqube', returnStatus: true)
             }
 
