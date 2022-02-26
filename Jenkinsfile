@@ -36,11 +36,11 @@ pipeline {
       parallel {
         stage('Code Analysis') {
           steps {
-            withSonarQubeEnv('My SonarQube Server') {
+            withSonarQubeEnv('sonar') {
               bat(script: 'gradle sonarqube', returnStatus: true)
             }
 
-            waitForQualityGate true
+            waitForQualityGate abortPipeline: true
           }
         }
 
